@@ -2,7 +2,7 @@ const timeouts = {
     easy: 1000,
     medium: 500,
     hard: 250,
-    goat: 150,
+    goat: 100,
 }
 let scoreboard = []
 const scoreboardList = document.querySelector('#scoreb')
@@ -29,33 +29,34 @@ function game(timeout){
         click = true;
     });
     interval = setInterval(() => {
+        
+        
         number++;
-        countup.innerText = number;
-        {
-         setTimeout(()=>{
+        countup.innerText = number + 1;
+        
+        
             if((number % 7 == 0 || number.toString().includes('7'))){
                 if(click == true){
                  score++
-                    
+                 
                 }
                 else{
-                 clearInterval(interval)
-                 lose(score)
-                 addToScoreBoard(score)
+                    clearInterval(interval)
+                     lose(score,interval)
+                    addToScoreBoard(score)
                 }
                 
-             }
-             else{
-                 if(click == true){
-                     clearInterval(interval)
-                     lose(score)
+            }
+            else{
+                if(click == true){
+                    clearInterval(interval)
+                     lose(score,interval)
                      addToScoreBoard(score)
                  }
-             }
-            
-         },timeout*2)   
-            
-        }
+                }
+                
+                
+                
 
         click = false;
     },timeout)
@@ -74,9 +75,10 @@ function updateScoreBoardList(){
    
 }
 
-function lose(score){
+function lose(score,interval){
 alert("Przegrałeś! twój wynik to " +score)
-
+clearInterval(interval)
+number=1;
 ShowMenu()
 }
 

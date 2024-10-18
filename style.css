@@ -24,11 +24,15 @@ html, body {
 button {
     border: none;
     cursor: pointer;
+    
 }
 
 button:hover{
     transform: scale(105%);
+    
+
 }
+
 
 body {
     margin: 0;  
